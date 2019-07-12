@@ -22,7 +22,7 @@ docker swarm init
 docker stack deploy -c docker-compose.yml perforce
 ```
 
-An example Docker compose file which includes a basic HEALTHCHECK (so that the container is reset if the p4d process stops responding to commands) can be found [here](https://link).
+An example Docker compose file which includes a basic HEALTHCHECK (so that the container is reset if the p4d process stops responding to commands) can be found [here](https://github.com/angusbjones/docker-perforce-server/blob/master/docker-compose.test.yml).
 
 ## Configuring
 This image is meant to reflect a clean install of the Perforce helix-p4d server so access can be achieved by simply using the p4Admin or p4v GUI tools, or the p4 command line tool, to create a new user. 
@@ -61,21 +61,21 @@ docker exec perforce p4 help
 docker exec -i perforce p4 -u USERNAME user -i < p4-user-form.txt
 ```
 
-This command redirects a file local to the host machine (here "./p4-user-form.txt") into the container's p4 user command. An example user form can be found [here](https://link).
+This command redirects a file local to the host machine (here "./p4-user-form.txt") into the container's p4 user command. An example user form can be found [here](https://github.com/angusbjones/docker-perforce-server/blob/master/Examples/p4-user-form.txt).
 
 ### Set the protection table
 ```shell
 docker exec -i perforce p4 -u USERNAME protect -i < p4-protections-form.txt
 ```
 
-This command redirects a file local to the host machine (here "./p4-protections-form.txt") into the container's p4 protect command. An example protections form can be found [here](https://link).
+This command redirects a file local to the host machine (here "./p4-protections-form.txt") into the container's p4 protect command. An example protections form can be found [here](https://github.com/angusbjones/docker-perforce-server/blob/master/Examples/p4-protections-form.txt).
 
 ### Add a group via a specification form
 ```shell
 docker exec -i perforce p4 -u USERNAME group -i < p4-group-form.txt
 ```
 
-This command redirects a file local to the host machine (here "./p4-group-form.txt") into the container's p4 protect command. An example group form can be found [here](https://link).
+This command redirects a file local to the host machine (here "./p4-group-form.txt") into the container's p4 protect command. An example group form can be found [here](https://github.com/angusbjones/docker-perforce-server/blob/master/Examples/p4-group-form.txt).
 
 ### Login
 ```shell
