@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  p4d:
+    image: angusbjones/perforce-server:latest
+    volumes:
+      - type: volume
+        source: perforce_root
+        target: /root/perforceDB 
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: any
+    ports:
+      - "1666:1666"
+    healthcheck:
+      test: ["CMD", "bash", "-c", "test -z \"$$(p4 -q -p \"$$P4HOST:$$P4PORT\" 2>&1)\""]
+      interval: 30s
+      timeout: 30s
+      retries: 3
+      start_period: 5s
+volumes:
+  perforce_root:

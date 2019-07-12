@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+  sut:
+    build: .
+    command: ["bash", "-c", "test -z \"$$(p4 -q -p 'p4d:1666' 2>&1)\""]
+    depends_on:
+      - p4d
+  p4d:
+    build: .
+    ports:
+      - "1666:1666"
